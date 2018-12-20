@@ -1,0 +1,129 @@
+<!--
+Copyright 2018 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Set the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+  <!-- Set character encoding -->
+  <meta charset="utf-8">
+
+  <!-- Set title -->
+  <title>News</title>
+
+  <!-- <script src="/js/app.js"></script> -->
+  <!-- Request styles -->
+  <link rel="icon" type="image/x-icon" href="./images/icon/favicon.ico">
+  <link rel="stylesheet" href="/style/bootstrap.min.css " />
+  <meta name="theme-color" content="#2196f3"/>
+
+  <script src="/js/main.js"></script>
+
+  <link rel="stylesheet" href="/style/main.css" />
+  <link rel="manifest" href='./manifest.json' />
+</head>
+
+<body>
+  <header>
+    <ul class="nav nav-tabs bg-dark text-white" >
+      <li class="nav-item active">
+        <a class="nav-link " href="/">Today</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/404.html">Fake</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="user.html">Link</a>
+      </li>
+    
+    </ul>
+  </header>
+  <form class="form-inline">
+      <label for="">City</label>
+      <input autocomplete="address-level2" type="search=" name="" id="cityname" class="form-control" placeholder="" aria-describedby="helpId">
+      <button class="btn btn-primary mt-1" onclick="weather()">Weather</button>
+    </form>
+
+ <div id='temp0'>
+    <h4>Location Based Weather:</h4>
+ </div>
+  <div class="card-group mt-1 w-100" id="temp1">
+    
+    </div>
+<!-- <button class="btn btn-primary mt-1" onclick="userdata()">Weather</button> -->
+      
+<section>
+    <div class="left column">
+      <h4 class="list-title">Trending Articles</h4>
+      <ul class="vertical-list">
+        <li class="list-item"><a href="pages/article1.html" class="post-link">Article 1</a></li>
+        <li class="list-item"><a href="pages/article2.html" class="post-link">Article 2</a></li>
+        <li class="list-item"><a href="pages/article3.html" class="post-link">Article 3</a></li>
+        <li class="list-item"><a href="pages/article4.html" class="post-link">Article 4</a></li>
+        <li class="list-item"><a href="pages/article-missing.html" class="post-link">Non-existent article</a></li>
+      </ul>
+    </div>
+    <div class="right column">
+      <h4 class="list-title">Archived Posts</h4>
+      <ul class="vertical-list">
+        <li class="list-item"><a href="pages/post1.html" class="post-link">Archived Post 1</a></li>
+        <li class="list-item"><a href="pages/post2.html" class="post-link">Archived Post 2</a></li>
+        <li class="list-item"><a href="pages/post3.html" class="post-link">Archived Post 3</a></li>
+        <li class="list-item"><a href="pages/post-missing.html" class="post-link">Non-existent Post 4</a></li>
+      </ul>
+    </div>
+    <!-- <button  class="btn btn-primary" onclick="userdata()">User</button> -->
+  </section>
+  <ul id="people01"></ul>
+
+
+  <script src="./js/location.js"></script>
+  <script src="/js/animation.js"></script>
+
+  <script src="/js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log(`Service Worker registered! Scope: ${registration.scope}`);
+          })
+          .catch(err => {
+            console.log(`Service Worker registration failed: ${err}`);
+          });
+      });
+    }
+    const citytemp = document.getElementById('temp1');
+    for (i = 0; i < localStorage.length ; i++) {
+      const key = localStorage.key(i);
+      const value = localStorage.getItem(key);
+      citytemp.innerHTML +=
+        `<div class="card text-left" >
+     <div class="card-body">
+                      <h4 class="card-title">City:${key}</h4>
+                      <p class="card-text">Temprature:${value}</p></div></div>`;
+
+//location
+
+    }
+  
+</script>
+</body>
+
+</html>
